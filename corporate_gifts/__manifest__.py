@@ -2,7 +2,7 @@
     'name': 'Corporate Gifts',
     'version': '1.0',
     'category': 'Services',
-    'description': u"""
+    'description': """
 This module is for marketing companies selling and producing customized corporate gifts, like mugs and t-shirts.
 """,
     'depends': [
@@ -22,6 +22,7 @@ This module is for marketing companies selling and producing customized corporat
         'sale_planning',
         'sale_product_matrix',
         'sale_purchase',
+        'web_studio',
         'website_crm',
         'website_sale_product_configurator',
         'website_sale_stock',
@@ -49,7 +50,12 @@ This module is for marketing companies selling and producing customized corporat
         'data/sale_order_template_line.xml',
         'data/knowledge_cover.xml',
         'data/knowledge_article.xml',
+        'data/knowledge_article_favorite.xml',
+        'data/mail_message.xml',
         'data/ir_attachment_post.xml',
+        'data/website_view.xml',
+        'data/website_menu.xml',
+        'data/ir_model_data.xml',
     ],
     'demo': [
         'demo/website.xml',
@@ -73,8 +79,8 @@ This module is for marketing companies selling and producing customized corporat
         'demo/planning_slot_template.xml',
         'demo/planning_slot.xml',
         'demo/ir_attachment_post.xml',
+        'demo/payment_provider_demo_post.xml',
     ],
     'license': 'OPL-1',
     'images': ['images/main.png'],
-    'maintenance_loc': 5,
 }

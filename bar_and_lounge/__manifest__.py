@@ -3,8 +3,8 @@
     'version': '1.0',
     'category': 'Services',
     'description': """
-​This setup is for service companies who provides all kind of service that customer can available at the Airport like Porter Service, Buggy Service, Airport Assistance etc..
-​This Services can be avail directly from the airport and individuals can also purchase the services from the website.
+This setup is for service companies who provides all kind of service that customer can available at the Airport like Porter Service, Buggy Service, Airport Assistance etc..
+This Services can be avail directly from the airport and individuals can also purchase the services from the website.
 """,
     'depends': [
         'base_geolocalize',
@@ -51,6 +51,8 @@
         'data/mrp_bom_line.xml',
         'data/knowledge_cover.xml',
         'data/knowledge_article.xml',
+        'data/knowledge_article_favorite.xml',
+        'data/mail_message.xml',
     ],
     'demo': [
         'demo/pos_config.xml',
@@ -63,6 +65,7 @@
         'demo/x_type_of_airport.xml',
         'demo/x_airport_master.xml',
         'demo/x_services.xml',
+        'demo/product_product.xml',
         'demo/sale_order.xml',
         'demo/sale_order_line.xml',
         'demo/sale_order_confirm.xml',
@@ -76,8 +79,8 @@
         'demo/purchase_order_confirm.xml',
         'demo/planning_slot.xml',
         'demo/website_theme_apply.xml',
+        'demo/payment_provider_demo_post.xml',
     ],
     'license': 'OPL-1',
     'images': ['images/main.png'],
-    'maintenance_loc': 0,
 }

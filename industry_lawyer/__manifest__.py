@@ -2,9 +2,8 @@
     'name': 'Lawyer',
     'version': '1.0',
     'category': 'Services',
-    'description': u"""
-    This module insall a configuration that preset the modules and
-    configuration of a law firm.
+    'description': """
+This module installs a configuration that presets the modules and configure Odoo for a law firm.
 """,
     'depends': [
         'documents_project',
@@ -28,6 +27,8 @@
         'data/sale_order_template_line.xml',
         'data/knowledge_cover.xml',
         'data/knowledge_article.xml',
+        'data/knowledge_article_favorite.xml',
+        'data/mail_message.xml',
         'data/appointment_type.xml',
     ],
     'demo': [
@@ -36,6 +37,7 @@
         'demo/hr_employee.xml',
         'demo/sale_order.xml',
         'demo/sale_order_line.xml',
+        'demo/sale_order_post.xml',
         'demo/res_users.xml',
         'demo/appointment_type.xml',
         'demo/website.xml',
@@ -46,5 +48,4 @@
     ],
     'license': 'OPL-1',
     'images': ['images/main.png'],
-    'maintenance_loc': 0,
 }

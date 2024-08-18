@@ -8,14 +8,13 @@ It may include surveying of building properties and the measurement of completed
 """,
     'depends': [
         'base_automation',
-        'account',
         'crm',
         'documents',
         'hr_timesheet',
         'knowledge',
-        'mail',
         'planning',
         'sale_project',
+        'web_studio',
         'theme_treehouse',
     ],
     'data': [
@@ -34,6 +33,10 @@ It may include surveying of building properties and the measurement of completed
         'data/sale_order_template.xml',
         'data/knowledge_cover.xml',
         'data/knowledge_article.xml',
+        'data/knowledge_article_favorite.xml',
+        'data/mail_message.xml',
+        'data/website_view.xml',
+        'data/ir_model_data.xml',
     ],
     'demo': [
         'demo/res_partner.xml',
@@ -50,5 +53,4 @@ It may include surveying of building properties and the measurement of completed
     ],
     'license': 'OPL-1',
     'images': ['images/main.png'],
-    'maintenance_loc': 0,
 }

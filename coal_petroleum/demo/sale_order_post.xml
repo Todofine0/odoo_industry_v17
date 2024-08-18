@@ -78,12 +78,4 @@
         <value eval="[ref('sale_order_1'), ref('sale_order_4')]"/>
     </function>
 
-    <function name="action_post" model="account.move">
-        <value model="sale.order" eval="
-            (
-                obj().env.ref('coal_petroleum.sale_order_1') +
-                obj().env.ref('coal_petroleum.sale_order_4')
-            ).invoice_ids.ids
-        "/>
-    </function>
 </odoo>

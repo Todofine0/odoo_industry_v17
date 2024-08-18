@@ -45,8 +45,11 @@
         'data/product_pricelist_item.xml',
         'data/knowledge_cover.xml',
         'data/knowledge_article.xml',
+        'data/knowledge_article_favorite.xml',
         'data/pos_payment_method.xml',
         'data/pos_config.xml',
+        'data/mail_message.xml',
+        'data/website_view.xml',
         'data/ir_model_data.xml',
     ],
     'demo': [
@@ -54,6 +57,7 @@
         'demo/res_partner.xml',
         'demo/crm_lead.xml',
         'demo/product_supplierinfo.xml',
+        'demo/product_template.xml',
         'demo/loyalty_program.xml',
         'demo/loyalty_rule.xml',
         'demo/loyalty_reward.xml',
@@ -63,6 +67,7 @@
         'demo/sale_order.xml',
         'demo/sale_order_line.xml',
         'demo/sale_order_post.xml',
+        'demo/payment_provider_demo_post.xml',
         'demo/website_views.xml',
         'demo/website_ir_attachment.xml',
         'demo/website.xml',
@@ -72,5 +77,4 @@
     ],
     'license': 'OPL-1',
     'images': ['images/main.png'],
-    'maintenance_loc': 3,
 }

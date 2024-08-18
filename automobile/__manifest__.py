@@ -45,6 +45,8 @@ Maintenance and accessorises etc.
         'data/knowledge_cover.xml',
         'data/res_config_settings.xml',
         'data/knowledge_article.xml',
+        'data/knowledge_article_favorite.xml',
+        'data/mail_message.xml',
     ],
     'demo': [
         'demo/res_partner.xml',
@@ -59,5 +61,4 @@ Maintenance and accessorises etc.
     ],
     'license': 'OPL-1',
     'images': ['images/main.png'],
-    'maintenance_loc': 3,
 }

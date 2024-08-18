@@ -1,15 +1,13 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from ast import literal_eval
+from pathlib import Path
 
-from odoo.addons.test_lint.tests.test_manifests import ManifestLinter, MANIFEST_KEYS
+from odoo.addons.test_lint.tests.test_manifests import ManifestLinter
 from odoo.modules.module import module_manifest
 from odoo.tests.common import tagged
-from odoo.tools import cloc
 
 from .industry_case import IndustryCase, get_industry_path
-
-MANIFEST_KEYS |= {'maintenance_loc'}
 
 CATEGORIES = ('Services', 'Retail', 'Manufacturing', 'eCommerce', 'Public', 'NGO')
 
@@ -21,7 +19,6 @@ MANDATORY_KEYS = {
     'depends': [],
     'images': [],
     'license': '',
-    'maintenance_loc': 0,
     'name': '',
     'version': '',
 }
@@ -32,10 +29,7 @@ class ManifestTest(ManifestLinter, IndustryCase):
 
     def _load_manifest(self, module):
         manifest_file = module_manifest(get_industry_path() + module)
-        manifest_data = {}
-        with open(manifest_file, mode='r') as f:
-            manifest_data.update(literal_eval(f.read()))
-        return manifest_data
+        return literal_eval(Path(manifest_file).read_text())
 
     def test_manifests(self):
         for module in self.installed_modules:
@@ -43,6 +37,8 @@ class ManifestTest(ManifestLinter, IndustryCase):
                 manifest_data = self._load_manifest(module)
                 self._test_manifest_keys(module, manifest_data)
                 self._test_manifest_values(module, manifest_data)
+                self._test_files_in_manifest(module, manifest_data, 'data')
+                self._test_files_in_manifest(module, manifest_data, 'demo')
 
     def _test_manifest_keys(self, module, manifest_data):
         super()._test_manifest_keys(module, manifest_data)
@@ -57,34 +53,30 @@ class ManifestTest(ManifestLinter, IndustryCase):
             self.assertEqual(
                 type(value),
                 expected_type,
-                "Wrong type for manifest value %s in module %s, expected %s" % (
-                    key, module, expected_type
-                )
+                "Wrong type for manifest value %s in module %s, expected %s"
+                % (key, module, expected_type),
             )
             if key == 'category':
                 self.assertIn(
-                    value, CATEGORIES, (
-                        "Wrong category %s in manifest, it should be one of the following: %s" % (
-                            value, ", ".join(cat for cat in CATEGORIES),
+                    value,
+                    CATEGORIES,
+                    (
+                        "Wrong category %s in manifest, it should be one of the following: %s"
+                        % (
+                            value,
+                            ", ".join(cat for cat in CATEGORIES),
                         )
-                    )
+                    ),
                 )
             elif key == 'images':
                 self.assertEqual(
                     value,
                     ['images/main.png'],
-                    "Wrong images %r in manifest, it should be ['images/main.png']" % value
+                    "Wrong images %r in manifest, it should be ['images/main.png']" % value,
                 )
             elif key == 'license':
                 self.assertEqual(
                     value, 'OPL-1', "Wrong license %r in manifest, it should be 'OPL-1'" % value
-                )
-            elif key == 'maintenance_loc':
-                c = cloc.Cloc()
-                c.count_database(self.cr.dbname)
-                loc = c.code.get(module, 0)
-                self.assertEqual(
-                    loc, value, "Wrong maintenance loc, counted %d instead of %d." % (loc, value)
                 )
             elif key == 'data':
                 self.assertTrue(
@@ -97,3 +89,42 @@ class ManifestTest(ManifestLinter, IndustryCase):
                     "all demo files should be in 'demo/' subfolder",
                 )
         return res
+
+    def _test_files_in_manifest(self, module, manifest_data, folder_name):
+        data_folder = Path(get_industry_path() + module) / folder_name
+        if data_folder.exists():
+            # Get all files in the folder
+            data_files = {
+                str(file.relative_to(data_folder.parent))
+                for file in data_folder.glob('*')
+                if file.is_file()
+            }
+            # Get all files listed in the manifest for the folder
+            manifest_list = manifest_data.get(folder_name, [])
+            manifest_files = set(manifest_list)
+
+            # Check for duplicates in the manifest
+            duplicates_in_manifest = {
+                item for item in manifest_list if manifest_list.count(item) > 1
+            }
+            self.assertFalse(
+                duplicates_in_manifest,
+                "These files are duplicated in %s in the manifest: %s"
+                % (folder_name, ", ".join(duplicates_in_manifest)),
+            )
+
+            # Check that all files in the folder are listed in the manifest
+            missing_in_manifest = data_files - manifest_files
+            self.assertFalse(
+                missing_in_manifest,
+                "These files are not listed in %s in the manifest: %s"
+                % (folder_name, ", ".join(f for f in missing_in_manifest)),
+            )
+
+            # Check that all files listed in the manifest exist in the folder
+            missing_on_disk = [file for file in manifest_files if file not in data_files]
+            self.assertFalse(
+                missing_on_disk,
+                "These files are listed in manifest %s but were not found on the disk: %s"
+                % (folder_name, ", ".join(f for f in missing_on_disk)),
+            )

@@ -2,7 +2,7 @@
     'name': 'Certification Auditors',
     'version': '1.0',
     'category': 'Services',
-    'description': u"""
+    'description': """
 This module setup your database to easily use odoo in a certification company.
 """,
     'depends': [
@@ -32,7 +32,12 @@ This module setup your database to easily use odoo in a certification company.
         'data/project_project.xml',
         'data/product_product.xml',
         'data/knowledge_article.xml',
+        'data/knowledge_article_favorite.xml',
+        'data/mail_message.xml',
         'data/ir_attachment_post.xml',
+        'data/website_view.xml',
+        'data/website_page.xml',
+        'data/website_menu.xml',
         'data/ir_model_data.xml',
     ],
     'demo': [
@@ -45,13 +50,9 @@ This module setup your database to easily use odoo in a certification company.
         'demo/sale_order.xml',
         'demo/sale_order_line.xml',
         'demo/sale_order_post_action.xml',
-        'demo/website_view.xml',
-        'demo/website_page.xml',
-        'demo/website_menu.xml',
         'demo/x_control_charging_station.xml',
     ],
     'license': 'OPL-1',
     'images': ['images/main.png'],
-    'maintenance_loc': 0,
 
 }

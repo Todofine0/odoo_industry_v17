@@ -20,7 +20,7 @@ Those agencies work on two levels and with two different audiences, ...
         'web_studio',
         'website_appointment',
         'website_crm',
-        'website_hr_recruitment'
+        'website_hr_recruitment',
     ],
     'data': [
         'data/base_automation.xml',
@@ -32,6 +32,8 @@ Those agencies work on two levels and with two different audiences, ...
         'data/ir_ui_view.xml',
         'data/product_product.xml',
         'data/knowledge_article.xml',
+        'data/knowledge_article_favorite.xml',
+        'data/mail_message.xml',
         'data/appointment_type.xml',
         'data/hr_department.xml',
         'data/hr_job.xml',
@@ -41,12 +43,15 @@ Those agencies work on two levels and with two different audiences, ...
         'data/sign_request.xml',
         'data/crm_stage.xml',
         'data/crm_tag.xml',
+        'data/website_view.xml',
+        'data/ir_model_data.xml',
     ],
     'demo': [
         'demo/res_partner.xml',
         'demo/calendar_event.xml',
         'demo/website.xml',
         'demo/crm_lead.xml',
+        'demo/hr_job.xml',
         'demo/sale_order.xml',
         'demo/sale_order_line.xml',
         'demo/sale_order_confirm.xml',
@@ -59,5 +64,4 @@ Those agencies work on two levels and with two different audiences, ...
     ],
     'license': 'OPL-1',
     'images': ['images/main.png'],
-    'maintenance_loc': 1,
 }

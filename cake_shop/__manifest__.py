@@ -3,7 +3,7 @@
     'version': '1.0',
     'category': 'Retail',
     'description': """
-This setup is for bakery shop companies selling to consumers. Bakery are businesses that carry a large selection of products: puffs , cakes , pastries etc... 
+This setup is for bakery shop companies selling to consumers. Bakery are businesses that carry a large selection of products: puffs , cakes , pastries etc...
 """,
     'depends': [
         'knowledge',
@@ -22,6 +22,8 @@ This setup is for bakery shop companies selling to consumers. Bakery are busines
         'data/product_product.xml',
         'data/knowledge_cover.xml',
         'data/knowledge_article.xml',
+        'data/knowledge_article_favorite.xml',
+        'data/mail_message.xml',
         'data/mrp_bom.xml',
         'data/mrp_bom_line.xml',
         'data/res_config_settings.xml',
@@ -33,12 +35,13 @@ This setup is for bakery shop companies selling to consumers. Bakery are busines
         'demo/website.xml',
         'demo/res_partner.xml',
         'demo/product_supplierinfo.xml',
+        'demo/product_product.xml',
         'demo/purchase_order.xml',
         'demo/sale_order.xml',
         'demo/website_view.xml',
         'demo/website_theme_apply.xml',
+        'demo/payment_provider_demo_post.xml',
     ],
     'license': 'OPL-1',
     'images': ['images/main.png'],
-    'maintenance_loc': 0,
 }

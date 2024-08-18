@@ -40,6 +40,11 @@ schematic design, design development, worksite follow-up, energy efficiency asse
         'data/sale_order_template_line.xml',
         'data/knowledge_cover.xml',
         'data/knowledge_article.xml',
+        'data/knowledge_article_favorite.xml',
+        'data/mail_message.xml',
+        'data/website_view.xml',
+        'data/website_theme_apply.xml',
+        'data/ir_model_data.xml',
     ],
     'demo': [
         'demo/website.xml',
@@ -55,5 +60,4 @@ schematic design, design development, worksite follow-up, energy efficiency asse
     ],
     'license': 'OPL-1',
     'images': ['images/main.png'],
-    'maintenance_loc': 0,
 }
